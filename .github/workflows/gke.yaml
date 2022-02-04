@@ -36,6 +36,6 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
     # Getting list of pods
-    - name: Deploy
+    - name: Collect data
       run: |-
         kubectl get pods -l --namespace=default
