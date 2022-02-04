@@ -18,9 +18,8 @@ jobs:
     - uses: actions/checkout@v2
         # Set up kustomize
     - name: Deploy
-      run: |-
-        ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
-        ./kustomize build . | kubectl apply -f -
+      run: |
+        kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
         kubectl get nodes
