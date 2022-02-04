@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: onlineboutique1    # Add your cluster name here.
