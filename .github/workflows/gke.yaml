@@ -1,4 +1,4 @@
-name: Metrics trial
+name: Metrics trials
 
 on:
   push:
