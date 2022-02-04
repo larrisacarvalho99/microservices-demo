@@ -39,4 +39,4 @@ jobs:
     # Getting list of pods
     - name: Deploy
       run: |-
-        kubectl get pods -l app=online-boutique --namespace=default
+        kubectl top pod
