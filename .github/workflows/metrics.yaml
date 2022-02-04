@@ -1,4 +1,4 @@
-name: "Metrics"
+name: "Metric"
 on:
   push:
     # run on pushes to main
