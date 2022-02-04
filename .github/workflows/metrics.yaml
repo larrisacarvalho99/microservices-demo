@@ -1,0 +1,21 @@
+name: "Metrics"
+on:
+  push:
+    # run on pushes to main
+    branches:
+      - main
+jobs:
+  push-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Collecting Metrics
+      timeout-minutes: 20
+      run: |
+        kubectl get nodes
+      env:
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        GKE_CLUSTER: onlineboutique    # Add your cluster name here.
+        GKE_ZONE: us-central1-b   # Add your cluster zone here.
+        DEPLOYMENT_NAME: onlineboutique # Add your deployment name here.
+        IMAGE: static-site
