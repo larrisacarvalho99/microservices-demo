@@ -4,6 +4,12 @@ on:
     # run on pushes to main
     branches:
       - main
+env:
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  GKE_CLUSTER: onlineboutique    # Add your cluster name here.
+  GKE_ZONE: us-central1-b   # Add your cluster zone here.
+  DEPLOYMENT_NAME: onlineboutique # Add your deployment name here.
+  IMAGE: static-site
 jobs:
   push-deploy:
     runs-on: ubuntu-latest
@@ -13,9 +19,4 @@ jobs:
       timeout-minutes: 20
       run: |
         kubectl get pods
-      env:
-        PROJECT_ID: ${{ secrets.PROJECT_ID }}
-        GKE_CLUSTER: onlineboutique    # Add your cluster name here.
-        GKE_ZONE: us-central1-b   # Add your cluster zone here.
-        DEPLOYMENT_NAME: onlineboutique # Add your deployment name here.
-        IMAGE: static-site
+        kubectl get services -o wide
