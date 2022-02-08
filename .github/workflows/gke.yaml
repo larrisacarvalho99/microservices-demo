@@ -1,4 +1,4 @@
-name: Process automations
+name: Process automation
 
 on:
   push:
