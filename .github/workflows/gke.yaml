@@ -41,10 +41,14 @@ jobs:
       with:
         credentials_json: ${{ secrets.GKE_SA_KEY }}
 
-    - uses: google-github-actions/upload-cloud-storage@v0
 
     # Getting list of pods
     - name: Data collection
       run: |-
         kubectl get pods --cluster onlineboutique
-        kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods > gs://metrics_collection
+        kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods > metrics.json
+    
+    - uses: google-github-actions/upload-cloud-storage@v0
+      with:
+        path: '/home/larrisacarvalho99/metrics.json'
+        destination: 'metrics_collection/file'
