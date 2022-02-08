@@ -28,21 +28,21 @@ jobs:
         project_id: ${{ secrets.PROJECT_ID }}
 
 
-    # Get the GKE credentials so we can deploy to the cluster
+    # Get the GKE credentials
     - uses: google-github-actions/get-gke-credentials@v0
       with:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
         
-    
+    # Setup gcloud auth bucket
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
         credentials_json: ${{ secrets.GKE_SA_KEY }}
 
 
-    # Getting list of pods
+    # Getting the metrics of workload and storing it in bucket
     - name: Data collection
       run: |-
         kubectl get pods --cluster onlineboutique
