@@ -39,4 +39,4 @@ jobs:
     - name: Data collection
       run: |-
         kubectl get pods --cluster onlineboutique
-        kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods > metrics.json
+        kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods > gs://metrics_collection/metrics.json
