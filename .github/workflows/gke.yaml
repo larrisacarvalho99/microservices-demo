@@ -38,4 +38,4 @@ jobs:
     # Getting list of pods
     - name: Data collection
       run: |-
-        kubectl get pods -l --namespace=default
+        kubectl get pods --cluster onlineboutique
