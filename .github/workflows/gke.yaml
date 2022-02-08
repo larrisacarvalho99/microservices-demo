@@ -49,7 +49,3 @@ jobs:
         kubectl get --raw /apis/metrics.k8s.io/v1beta1/namespaces/default/pods > metrics.json
         gsutil cp metrics.json gs://metrics_collection
     
-    - uses: google-github-actions/upload-cloud-storage@v0
-      with:
-        path: 'metrics.json'
-        destination: 'metrics_collection/f'
